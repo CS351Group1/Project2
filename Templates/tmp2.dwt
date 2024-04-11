@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<!-- TemplateBeginEditable name="doctitle" -->
+<!-- TemplateEndEditable -->
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+<link rel="stylesheet" href="../Project1/css/tempcss.css">
+</head>
+<body>
+		<div style="max-width: 1300px; font-family: monospace; padding-left: 650px">
+        <div style="padding-left: 100px"><span><h1> Hamzah Ahmadi <b><a href="../Project1/Resume/resume.html">resume</a> |  <a href="https://www.linkedin.com/in/hamzahahmadi/" target="_blank">linkedin</a> | <a href="../Project1/resume/coverletter.html">cover letter</a></b></h1></span></div>
+			<!-- TemplateBeginEditable name="edit_here" -->edit_here<!-- TemplateEndEditable -->
+		</div>
+</body>
+</html>

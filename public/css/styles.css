@@ -1,0 +1,7 @@
+@charset "utf-8";
+/* CSS Document */
+.myDivk {
+    border: 5px outset red;
+    background-color: rgb(0, 0, 0, 0.4);
+    text-align: center;
+}

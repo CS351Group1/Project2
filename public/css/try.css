@@ -1,0 +1,50 @@
+@charset "utf-8";
+/* CSS Document */
+
+.pics{
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.pics img{
+    width: 0.1%;
+    padding: 2.9em;
+    flex: 1 1 auto;
+}
+
+.text{
+    text-align: justify;
+    justify-content: center;
+    padding: 20px;
+    margin-left: 15%;
+    width: 70%;
+}
+
+.product{
+    border-color: #393939;
+    border-width: thick;
+    width: 75%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2%;
+    margin-left: 11%;
+}
+
+.product .text{
+    padding: 10% ;font-size: 24px;
+}
+
+.product .btn{
+    margin-top: 10px;
+    display: inline-block;
+    background:#333;
+    color:#fff;
+    font-size: 17px;
+    border-radius: 5px;
+    padding: 5px 20px;
+}
+
+.product .btn:hover{
+    letter-spacing: 1px;
+}
