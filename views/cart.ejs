@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Shop Page</title>
+		<link rel="stylesheet" href="/css/cart.css" />
+		<link
+			rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+		/>
+	</head>
+	<body>
+		<%- include('partials/navbar') %>
+		<h1>Your Shopping Cart</h1>
+		<div class="cart-wrapper">
+			<div class="cart-content-left">
+				<% items.forEach(function(item) { if (item) { %>
+				<div class="cart-item-flex-container">
+					<div class="product-img">
+						<img
+							src="<%= item.img %>"
+							alt="<%= item.title %>"
+							style="width: 100%"
+						/>
+					</div>
+					<div class="cart-product-title"><%= item.title %></div>
+					<div>$<%= item.price %></div>
+				</div>
+				<% } else { %>
+				<li>Item not available</li>
+				<% } }); %>
+			</div>
+			<div class="checkout-container">
+				<% if (items.length > 0) { %>
+				<div class="total-price">Total: $<%= totalPrice.toFixed(2) %></div>
+				<button type="button" class="checkout-button">Checkout</button>
+				<% } else { %>
+				<p>Your cart is empty.</p>
+				<% } %>
+			</div>
+		</div>
+	</body>
+</html>

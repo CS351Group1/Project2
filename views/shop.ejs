@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Shop Page</title>
+		<link rel="stylesheet" href="/css/shop2.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	</head>
+	<body>
+        <%- include('partials/navbar') %>
+		<div class="shop-wrapper">
+			<h1>Shop the Latest Tech</h1>
+			<div class="products-container">
+				<% ShopItems.forEach(function(item) { %>
+					<div class="product">
+						<div class="product-img">
+							<img src="<%= item.img %>" alt="<%= item.title %>" style="width: 100%">
+						</div>
+						<div class="product-info">
+							<h2><%= item.title %></h2>
+							<p>$<%= item.price %></p>
+							<p><%= item.description %></p>
+							<form action="/shop/add-to-cart" method="post">
+								<input type="hidden" name="productId" value="<%= item.id %>">
+								<button type="submit">Add to Cart</button>
+							</form>
+						</div>
+					</div>
+				<% }); %>
+					
+			</div>
+		</div>
+	</body>
+</html>

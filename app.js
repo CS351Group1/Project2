@@ -3,11 +3,14 @@ var express = require('express');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var path=require('path');
+var addCartToLocals = require('./middlewares/addCartToLocals');
 
 
 var createRouter = require('./routes/createaccount');
 var accountRouter = require('./routes/account');
 var usersRouter = require('./routes/users');
+var shopRouter = require('./routes/shop');
+var cartRouter = require('./routes/cart');
 
 var app = express();
 
@@ -15,6 +18,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+// middleware
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -22,10 +26,23 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'css')));
 
+// Session middleware
+const session = require('express-session');
+app.use(session({
+    secret: 'gfdfg443huj', 
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }
+}));
+
+app.use(addCartToLocals);
 
 app.use('/', createRouter);
 app.use('/account', accountRouter);
 app.use('/users', usersRouter);
+app.use('/shop', shopRouter);
+app.use('/cart', cartRouter);
+
 
 
 // catch 404 and forward to error handler

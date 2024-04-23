@@ -1,0 +1,8 @@
+.cart-icon-container{
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+}
+.cart-icon {
+    height: 20px;
+}
