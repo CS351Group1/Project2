@@ -14,8 +14,8 @@ router.use(bodyParser.urlencoded({ extended: true })); // for parsing applicatio
 
 
 var controllerDatabase = require('../controllers/database');
-router.get('/', controllerDatabase.getCustomerss);
+router.get('/', controllerDatabase.newAccount);
 
-router.post("/", controllerDatabase.saveNewCustomer); //see controllers/database.js file
+router.post('/', controllerDatabase.saveNewCustomer); //see controllers/database.js file
 
 module.exports = router;

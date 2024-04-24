@@ -21,12 +21,12 @@ initial-scale=1.0">
 </head>
 <body style="font-family: 'Courier New'">
 
-    <%- include('partials/navbar') %>
+<%- include('partials/navbar') %>
 
 <!-- InstanceBeginEditable name="EditRegion3" -->
 <div class="body2">
     <div class="wrapper">
-        <form id="account form" action="/account" method="POST">
+        <form id="account form">
             <h1>Create Account</h1>
             <p><div id="error" style="font-size: 20px"></div></p>
             <div class="input-box">
@@ -39,19 +39,19 @@ initial-scale=1.0">
                 <input name="password" type="password" id="password" placeholder="Password" >
             </div>
             <div class="input-box">
-                <input type="text" id="street" placeholder="Street (optional)">
+                <input type="text" name="street" id="street" placeholder="Street (optional)">
             </div>
             <div class="input-box">
-                <input type="text" id="city" placeholder="City (optional)">
+                <input type="text" name="city" id="city" placeholder="City (optional)">
             </div>
             <div class="input-box">
-                <input type="text" id="state" placeholder="State (optional)">
+                <input type="text" name="state" id="state" placeholder="State (optional)">
             </div>
             <div class="input-box">
-                <input type="text" id="zip" placeholder="Zip (optional)">
+                <input type="text" name="zip" id="zip" placeholder="Zip (optional)">
             </div>
             <div class="input-box">
-                <input type="text" id="phone" placeholder="Phone (optional)">
+                <input type="text" name="phone" id="phone" placeholder="Phone (optional)">
             </div>
 
             <button type="submit" class="btn">Create Account</button>
@@ -103,15 +103,16 @@ initial-scale=1.0">
             }
         }
         if (message.length==0){
-            message.push("account created");
+            message.push("account created, please log in");
             e.preventDefault();
             errorElement.innerText=message.join(', ');
-            window.location.href="/account"
+            form.action = "/create";
+            form.method = "post";
+            form.submit();
         }
 
     })
-    </script>
+</script>
 
-    <!-- InstanceEnd --></html>
-
+<!-- InstanceEnd --></html>
 

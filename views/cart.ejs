@@ -34,7 +34,7 @@
 			<div class="checkout-container">
 				<% if (items.length > 0) { %>
 				<div class="total-price">Total: $<%= totalPrice.toFixed(2) %></div>
-				<button type="button" class="checkout-button">Checkout</button>
+				<form action="/checkout"><input type="submit" class="checkout-button" value="Checkout"/></form>
 				<% } else { %>
 				<p>Your cart is empty.</p>
 				<% } %>

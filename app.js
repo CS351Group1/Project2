@@ -5,12 +5,14 @@ var logger = require('morgan');
 var path=require('path');
 var addCartToLocals = require('./middlewares/addCartToLocals');
 
-
+var homeRouter=require('./routes/home')
 var createRouter = require('./routes/createaccount');
 var accountRouter = require('./routes/account');
+var checkoutRouter=require('./routes/checkout')
 var usersRouter = require('./routes/users');
 var shopRouter = require('./routes/shop');
 var cartRouter = require('./routes/cart');
+var orderRouter = require('./routes/order');
 
 var app = express();
 
@@ -37,11 +39,15 @@ app.use(session({
 
 app.use(addCartToLocals);
 
-app.use('/', createRouter);
+app.use('/', homeRouter);
+app.use('/create', createRouter);
 app.use('/account', accountRouter);
+app.use('/checkout', checkoutRouter);
 app.use('/users', usersRouter);
 app.use('/shop', shopRouter);
 app.use('/cart', cartRouter);
+app.use('/cart', cartRouter);
+app.use('/order', orderRouter);
 
 
 

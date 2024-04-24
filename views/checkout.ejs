@@ -1,0 +1,189 @@
+<!doctype html>
+<html><!-- InstanceBegin template="/Templates/temp3.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+    <!-- InstanceBeginEditable name="doctitle" -->
+    <title>Checkout</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,
+initial-scale=1.0">
+    <link rel="stylesheet" href="/css/account.css">
+    <script defer src="../javascript/createaccount.js"></script>
+    <!-- InstanceEndEditable -->
+    <!-- InstanceBeginEditable name="head" -->
+    <!-- InstanceEndEditable -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+
+</head>
+<body style="font-family: 'Courier New'">
+
+<%- include('partials/navbar') %>
+
+<!-- InstanceBeginEditable name="EditRegion3" -->
+<div class="body2">
+    <div class="wrapper">
+        <form id="checkout form" action="/checkout" method="post">
+            <h1>Checkout</h1>
+            <p><div id="error" style="font-size: 20px"></div></p>
+            <div class="input-box">
+                <input name="email" type="email" id="email" placeholder="Email">
+            </div>
+            <div class="input-box">
+                <input name="username" type="username" id="username" placeholder="Username" >
+            </div>
+            <div class="input-box">
+                <input name="password" type="password" id="password" placeholder="Password" >
+            </div>
+            <p>Shipping</p>
+            <div class="input-box">
+                <input type="text" name="street" id="street" placeholder="Street">
+            </div>
+            <div class="input-box">
+                <input type="text" name="city" id="city" placeholder="City">
+            </div>
+            <div class="input-box">
+                <input type="text" name="state" id="state" placeholder="State">
+            </div>
+            <div class="input-box">
+                <input type="text" name="zip" id="zip" placeholder="Zip">
+            </div>
+            <div class="input-box">
+                <input type="text" name="phone" id="phone" placeholder="Phone">
+            </div>
+            <p>Payment</p>
+            <div class="input-box">
+                <input type="text" name="card_number" id="card_number" placeholder="card number">
+            </div>
+            <div class="input-box">
+                <input type="text" name="card_cvv" id="card_cvv" placeholder="card cvv">
+            </div>
+            <div class="input-box">
+                <input type="text" name="card_exp" id="card_exp" placeholder="card expiration">
+            </div>
+            <p>Billing address (if different from shipping)</p>
+            <div class="input-box">
+                <input type="text" name="bill_street" id="bill_street" placeholder="Street">
+            </div>
+            <div class="input-box">
+                <input type="text" name="bill_city" id="bill_city" placeholder="City">
+            </div>
+            <div class="input-box">
+                <input type="text" name="bill_state" id="bill_state" placeholder="State">
+            </div>
+            <div class="input-box">
+                <input type="text" name="bill_zip" id="bill_zip" placeholder="Zip">
+            </div>
+            <div class="input-box">
+                <input type="text" name="bill_phone" id="bill_phone" placeholder="Phone">
+            </div>
+            <div class="cart-wrapper">
+                <div class="cart-content-left">
+                    <% items.forEach(function(item) { if (item) { %>
+                        <div class="cart-item-flex-container">
+                            <div class="product-img">
+                                <img
+                                        src="<%= item.img %>"
+                                        alt="<%= item.title %>"
+                                        style="width: 20%"
+                                />
+                            </div>
+                            <div class="cart-product-title"><%= item.title %></div>
+                            <div>$<%= item.price %></div>
+                        </div>
+                    <% } else { %>
+                        <li>Item not available</li>
+                    <% } }); %>
+                </div>
+                <div class="checkout-container">
+                    <% if (items.length > 0) { %>
+                        <div class="total-price">Total+tax: $<%= totalPrice.toFixed(2) %> </div>
+                    <% } else { %>
+                        <p>Your cart is empty.</p>
+                    <% } %>
+                </div>
+            <button type="submit" class="btn">Place Order</button>
+
+        </form>
+    </div>
+</div><!-- InstanceEndEditable -->
+
+</body>
+<script type="text/javascript">
+    const email=document.getElementById("email")
+    const username=document.getElementById("username")
+    const password=document.getElementById("password")
+    const street=document.getElementById("street")
+    const city=document.getElementById("city")
+    const state=document.getElementById("state")
+    const zip=document.getElementById("zip")
+    const phone=document.getElementById("phone")
+    const card_num=document.getElementById("card_number")
+    const cvv=document.getElementById("card_cvv")
+    const exp=document.getElementById("card_exp")
+    const form=document.getElementById("checkout form")
+    const errorElement=document.getElementById("error")
+    const customerList = JSON.parse('<%- JSON.stringify(customerList) %>')
+    const nameoremail = JSON.parse('<%- JSON.stringify(nameoremail) %>')
+
+
+
+    let message=[]
+    let ii = 0;
+    while (ii < customerList.length) {
+        if (("email" in customerList[ii] && customerList[ii]["email"]==nameoremail) ||
+            ("username" in customerList[ii] && customerList[ii]["username"]==nameoremail)){
+            email.value=customerList[ii]["email"];
+            username.value=customerList[ii]["username"];
+            password.value=customerList[ii]["password"];
+            street.value=customerList[ii]["ship_housenumstreet"];
+            city.value=customerList[ii]["ship_city"];
+            state.value=customerList[ii]["ship_state"];
+            zip.value=customerList[ii]["ship_zip"];
+            phone.value=customerList[ii]["ship_phone"];
+            card_num.value=customerList[ii]["card_num"];
+            cvv.value=customerList[ii]["card_cvv"];
+            exp.value=customerList[ii]["card_exp"];
+        }
+        ii++;
+    }
+    if (email.value=='' || email.value==null){
+        message.push("Email is required")
+    }
+    if (username.value=='' || username.value==null){
+        message.push("Username is required")
+    }
+    if (password.value=='' || password.value==null){
+        message.push("Password is required")
+    }
+    if (street.value=='' || street.value==null){
+        message.push("Street is required")
+    }
+    if (city.value=='' || city.value==null){
+        message.push("City is required")
+    }
+    if (state.value=='' || state.value==null){
+        message.push("State is required")
+    }
+    if (zip.value=='' || zip.value==null){
+        message.push("Zip is required")
+    }
+    if (card_num.value=='' || card_num.value==null){
+        message.push("Card is required")
+    }
+    if (cvv.value=='' || cvv.value==null){
+        message.push("CVV is required")
+    }
+    if (exp.value=='' || exp.value==null){
+        message.push("Expiration is required")
+    }
+    if (message.length>0){
+        errorElement.innerText=message.join(', ')
+    }
+</script>
+
+<!-- InstanceEnd --></html>
+
