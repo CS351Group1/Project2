@@ -1,6 +1,6 @@
 Here at XTND we created a website that is for providing people with the best tech at the best price that is available. We decided that this would be good for the world because of how grand and intimidating the world of tech can be. So with this website we aim to solve this issue by giving the people a much more condensed medium that allows people to shop without feeling overwhelmed.  
 
-In this documentation we are going to go over the technicals on how we 
+In this documentation we are going to go over the technicals on how we used one of our groupmates Project one and build upon it to make it more dynamic. By adding data components that consisted of using nodeJS and express to better improve the functionality of the website. We also successfully established a connection to a database in order to take the website to the next level by being able to hold user data like order and account information.
 
 Template - The template used for the entire site (temp3.dwt) was created by us, and it set the font in the body, which contained the editable region where every other pages' html code went. Within that template, though, we used a template for the navigation bar from W3 schools. With Bootstrap, a navigation bar can extend or collapse, depending on the screen size. This standard navigation bar is created with nav class="navbar navbar-default". It uses css from
 
