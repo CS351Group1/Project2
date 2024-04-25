@@ -1,2 +1,3 @@
 Here at XTND we created a website that is for providing people with the best tech at the best price that is available. We decided that this would be good for the world because of how grand and intimidating the world of tech can be. So with this website we aim to solve this issue by giving the people a much more condensed medium that allows people to shop without feeling overwhelmed.  
+
 In this documentation we are going to go over the technicals on how we 
